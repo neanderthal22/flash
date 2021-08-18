@@ -35,43 +35,103 @@
 
 
 
+<script type="text/javascript">
+//<![CDATA[
+function WebForm_OnSubmit() {
+if (typeof(ValidatorOnSubmit) == "function" && ValidatorOnSubmit() == false) return false;
+return true;
+}
+//]]>
+</script>
+
+<div>
+
+	<input type="hidden" name="__VIEWSTATEGENERATOR" id="__VIEWSTATEGENERATOR" value="C2EE9ABB" />
+	<input type="hidden" name="__EVENTVALIDATION" id="__EVENTVALIDATION" value="/wEWBgL4w9COAwLyj/OQAgK3jsrkBALdhe+FDgLA5ay2BQLHyfnnAvKbpbF7PtXaQIxSFS6s03qU7X+n" />
 </div>
+    <div class="wrapLoginStyle">      
+        <div class="loginStyle">
+            
+            <span id="lblLogin" style="color:White;font-size:Large;">Pricing Tool Login</span>
+            <table>
+                <tr>
+                    <td><span>Utilizator:</span></td>
+                    <td><input name="tbUserName" type="text" id="tbUserName" class="loginTextbox" /></td>
+                </tr>
+                <tr>
+                    <td><span>Parola:</span></td>
+                    <td><input name="tbPassword" type="password" id="tbPassword" class="loginTextbox" /></td>
+                </tr>
+                <tr>
+                    <td><span>Domeniu:</span></td>
+                    <td><select name="ddlProvider" id="ddlProvider">
+	<option value="Extern1Provider">Domeniu extern</option>
+	<option selected="selected" value="Intern1Provider">Domeniu intern</option>
 
-<p>Please provide the following contact information:</p>
+</select></td>
+                </tr>
+                <tr>
+                    <td></td>
+                    <td></td>
+                </tr>
+            </table>            
+            <input type="submit" name="btLogin" value="Login" onclick="javascript:WebForm_DoPostBackWithOptions(new WebForm_PostBackOptions(&quot;btLogin&quot;, &quot;&quot;, true, &quot;&quot;, &quot;&quot;, false, false))" id="btLogin" class="ButtonStyle" />
+            <br />
+            <span id="lblLoginErrorDetails"></span>
+            
+        </div>
+    </div>
+    <span id="unameRegex" style="color:Red;visibility:hidden;">Nume de utilizator gresit. Te rugam sa faci autentificarea cu numele de utilizator fara prefixul de domeniu “cbc\” !</span>
 
-<div class="form-group">
-<p align="left">
-<label>Email</label>
-
-<input type="email"  class="form-control" name="email" size="3" maxlength="25" placeholder="someonesite@site.com" 
-autocomplete="on" required>
-
-</div>
-
-<div class="form-group">
-<p align="left">
-<label>Password</label>
+    <span id="tbpasswordRegex" style="color:Red;visibility:hidden;">Formatul de parolă nevalid. Introduceți din nou parola</span>
 
 
-<input type="password"  class="form-control" name="pass" size="3" maxlength="25" placeholder="Password" 
-autocomplete="on" required>
-</div>
+    
+<script type="text/javascript">
+//<![CDATA[
+var Page_Validators =  new Array(document.getElementById("unameRegex"), document.getElementById("tbpasswordRegex"));
+//]]>
+</script>
 
-<div class="small">Forgot password?</div>
+<script type="text/javascript">
+//<![CDATA[
+var unameRegex = document.all ? document.all["unameRegex"] : document.getElementById("unameRegex");
+unameRegex.controltovalidate = "tbUserName";
+unameRegex.errormessage = "Nume de utilizator gresit. Te rugam sa faci autentificarea cu numele de utilizator fara prefixul de domeniu “cbc\\” !";
+unameRegex.evaluationfunction = "RegularExpressionValidatorEvaluateIsValid";
+unameRegex.validationexpression = "^\\w+([-.]\\w+)*[^\\\\]$";
+var tbpasswordRegex = document.all ? document.all["tbpasswordRegex"] : document.getElementById("tbpasswordRegex");
+tbpasswordRegex.controltovalidate = "tbPassword";
+tbpasswordRegex.errormessage = "Formatul de parolă nevalid. Introduceți din nou parola";
+tbpasswordRegex.evaluationfunction = "RegularExpressionValidatorEvaluateIsValid";
+tbpasswordRegex.validationexpression = "^[^<>]+$";
+//]]>
+</script>
+
+
+<script type="text/javascript">
+//<![CDATA[
+
+var Page_ValidationActive = false;
+if (typeof(ValidatorOnLoad) == "function") {
+    ValidatorOnLoad();
+}
+
+function ValidatorOnSubmit() {
+    if (Page_ValidationActive) {
+        return ValidatorCommonOnSubmit();
+    }
+    else {
+        return true;
+    }
+}
+        //]]>
+</script>
+</form>
+</body>
+</html>
 <div class="text-center small" style="color: #67428B;">Don't have an account? <a href="register.html">Create one</a></div><br>
 <div class="form-group">
-
-<p align="center">
-<button type="submit" size="5" class="btn btn-danger" name="sign_in">Sign in</button>
-</div>
-</form>
-
-
-
-
-
-
-
 
 
 
